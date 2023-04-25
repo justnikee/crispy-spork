@@ -18,7 +18,7 @@ export default function RootLayout({
   <body className="{inter.className} flex justify-center">
     <div className='max-w-[1240px] w-full'>
       <nav className='flex items-center w-full h-[100px]'>
-        <div className='w-full flex items-center justify-start'>
+        <div className='w-1/4 flex items-center justify-start'>
             <Link href={"/"}>Nikhil</Link>
         </div>
         <div className='w-[75%] flex itmes-center justify-end gap-10'>

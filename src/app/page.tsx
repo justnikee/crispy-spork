@@ -9,8 +9,8 @@ import heroPictur from '../../public/1326.jpg'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <section className='flex w-full items-center justify-between'>
+    <main className="flex min-h-screen flex-col items-center justify-between">
+      <section className='flex w-full h-screen items-center justify-between '>
         <div>
              <h2>Hi I'm Nxkey</h2>
         </div>
@@ -20,6 +20,12 @@ export default function Home() {
             height={500}
           width={500}/>
         </div>
+      </section>
+      <section className='h-screen w-screen bg-white'>
+      </section>
+      <section className='h-screen w-screen bg-red-300'>
+      </section>
+      <section className='h-screen w-screen bg-green-400'>
       </section>
     </main>
   )
