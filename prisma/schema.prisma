@@ -13,46 +13,25 @@ datasource db {
 //one to many relation database //
 
 model User {
-  id             String          @id @default(uuid())
-  name           String
-  age            Int
-  email          String
-  role           Role            @default(BASIC)
-  writtenPosts   Post[]          @relation("written")
-  favioratePosts Post[]          @relation("faviorate")
-  UserPreferance UserPreferance?
-
-  @@unique([name, age])
-  @@index([email])
-}
-
-model UserPreferance {
-  id           String  @id @default(uuid())
-  emailUpdates Boolean
-  user         User    @relation(fields: [userId], references: [id])
-  userId       String  @unique
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  email     String   @unique
+  name      String?
+  role      Role     @default(USER)
+  posts     Post[]
 }
 
 model Post {
-  id             String   @id @default(uuid())
-  rating         Float
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
-  auther         User     @relation("written", fields: [autherId], references: [id])
-  autherId       String
-  favioratedBy   User     @relation("faviorate", fields: [favioratedById], references: [id])
-  favioratedById String
-
-  categories Category[]
-}
-
-model Category {
-  id    String @id @default(uuid())
-  name  String @unique
-  posts Post[]
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  published Boolean  @default(false)
+  title     String   @db.VarChar(255)
+  author    User?    @relation(fields: [authorId], references: [id])
+  authorId  Int?
 }
 
 enum Role {
-  BASIC
+  USER
   ADMIN
 }

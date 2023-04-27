@@ -1,18 +1,21 @@
-import { Prisma, PrismaClient } from '@prisma/client'
-const prisma = new PrismaClient()
+import { PrismaClient } from '@prisma/client'
 
-
- async function main() {
-     const user = await prisma.user.create({ data: { name: 'Nikhil' } })
-     console.log(user)
+declare global{
+  namespace NodeJS{
+    interface Global { }
+  }
 }
 
-main()
-  .then(async () => {
-    await prisma.$disconnect()
-  })
-  .catch(async (e) => {
-    console.error(e)
-    await prisma.$disconnect()
-    process.exit(1)
-  })
+
+interface CustomNodeJsGlobal extends NodeJS.Global {
+  prisma: PrismaClient
+}
+
+
+declare const global: CustomNodeJsGlobal
+
+const prisma = global.prisma || new PrismaClient()
+
+if (process.env.NODE_ENV === "development") global.prisma = prisma
+
+export default prisma
