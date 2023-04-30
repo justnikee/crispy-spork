@@ -4,19 +4,20 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 const heroImage = 'https://img.freepik.com/free-vector/scratch-devil-skull-vampire-vector-illustration_460848-6791.jpg?w=740&t=st=1682356190~exp=1682356790~hmac=0bb4b49ba0c271eaf59d84520829e9239bbb6505e199102a29610c053e9de36a'
 import heroPictur from '../../public/1326.jpg'
+import Note from '@/components/ui/note'
 
-async function getPosts() {
-  const res = await fetch(`${process.env.BASE_URL}./api/hello/getPosts.ts`)
-  if (!res.ok) {
-console.log(res)
-  }
-  return res.json();
-}
+// async function getPosts() {
+//   const res = await fetch(`${process.env.BASE_URL}./api/hello/getPosts`)
+//   if (!res.ok) {
+// console.log(res.json)
+//   }
+//   return res.json();
+// }
 
 export default async function Home() {
 
-  const data = await getPosts();
-console.log(data)
+//   const data = await getPosts();
+// console.log(data.json)
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
       <section className='flex w-full h-screen items-center justify-between '>
@@ -31,6 +32,7 @@ console.log(data)
         </div>
       </section>
       <section className='h-screen w-screen bg-white'>
+        <Note/>
       </section>
       <section className='h-screen w-screen bg-red-300'>
       </section>
