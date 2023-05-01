@@ -1,6 +1,8 @@
 "use client"
 
 import { useState } from "react"
+import axios from "axios"
+
 
 interface FormContent{
     title: string,
@@ -14,13 +16,22 @@ const [form , setForm ] = useState<FormContent>({title: "", content: "", id: ""}
 
     async function create(data: FormContent) {
         try {
-            fetch(`/api/create`, {
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-Type' : 'application/json'
-                },
-                method: 'POST'
-            }).then(() => setForm({title: '', content: '', id: ''}))
+            await axios.post('/api/create', data)
+                .then((res) => {
+                    setForm({
+                        title: '',
+                        content: '',
+                        id: ''
+                })
+            })
+
+            // await fetch(`/api/create`, {
+            //     body: JSON.stringify(data),
+            //     headers: {
+            //         'Content-Type' : 'application/json'
+            //     },
+            //     method: 'POST'
+            // }).then(() => setForm({title: '', content: '', id: ''}))
         } catch (error) {
             
         }
