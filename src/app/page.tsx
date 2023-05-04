@@ -36,7 +36,7 @@ export default async function Home({notes}: Props) {
     <main className="flex min-h-screen flex-col items-center justify-between">
       <section className='flex w-full h-screen items-center justify-between '>
         <div>
-          <h2>Hi I'm Nxkey</h2>
+          <h2>Hi</h2>
           <div>
             
           </div>
@@ -49,7 +49,7 @@ export default async function Home({notes}: Props) {
         </div>
       </section>
       <section className='h-screen w-screen bg-white'>
-        <Note/>
+       <Note/>
       </section>
       <section className='h-screen w-screen bg-red-300'>
       </section>

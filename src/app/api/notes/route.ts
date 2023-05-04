@@ -1,9 +1,9 @@
-import prisma from "../../../prisma/client";
+import prisma from "../../../../prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
 
 
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export function handler(req: NextApiRequest, res: NextApiResponse) {
     const { title, content } = req.body
     if (req.method === 'POST') {
          try {
@@ -20,3 +20,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     }
    
 }
+
+
+
